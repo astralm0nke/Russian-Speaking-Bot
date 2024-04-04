@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 import openai
 
 load_dotenv()
-OPENAI_KEY = os.getenv('OPENAI_KEY')
+openai.YURIS_KEY = os.getenv('OPENAI_SECRET')
 
 #Fxn to convert txt to speech
 ##Need to read thru the docs to find russian language voice option
