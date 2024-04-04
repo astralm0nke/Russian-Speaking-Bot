@@ -1,2 +1,2 @@
 # Russian-Speaking-Bot
-A bot powered by ChatGPT's API that you can speak Russian too, and it will speak back to you, effectively allowing a language learner to practice their speaking.
+I got the idea for this thinking about how myself and other Russian speakers/learners can practice our speaking skills. So I checked to see if ChatGPT understands Russian, then decided to use it with some kind of text-to-speech and vice-verse functionality. Thus Yuri was birthed. The Future is now. Russian students can practice their speaking with robots. No excuses!!!
