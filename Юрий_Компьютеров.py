@@ -1,4 +1,4 @@
-## Russian Speaking Practice Bot Powered by ChatGPT
+## Русскоязычный бот на базе ЧатГПТ, зовут 'Юрий'
 import speech_recognition as sr
 import os
 from gtts import gTTS
@@ -9,8 +9,7 @@ import openai
 load_dotenv()
 openai.YURIS_KEY = os.getenv('OPENAI_SECRET')
 
-#Fxn to convert txt to speech
-##Need to read thru the docs to find russian language voice option
+# Отпределите функции, которие слушает пользователя, общается моделю ЧатГПТ, и говорит пользователю
 r = sr.Recognizer()
 
 def Speak(body):
@@ -50,10 +49,10 @@ def send_to_chatGPT(messages, model='gpt-3.5-turbo'):
 messages = []
 while(1):
     text = sr.record_text()
-#ChatGPT understands messages as a dictionary of role, message text
+# ЧатГПТ понимает сообщения как словарь роли, содержания
     messages.append({'role': 'user', 'content': text})
     response = send_to_chatGPT(messages)
-# Chat GPT response spoken back to user
+# Юрий произносит сообщение пользователю
     Speak(response)
     
     print(response)
