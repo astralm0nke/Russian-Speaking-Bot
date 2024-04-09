@@ -1,4 +1,4 @@
-## Русскоязычный бот на базе ЧатГПТ, зовут 'Юрий'
+## Русскоязычный бот на базе ЧатГПТ, кого зовут 'Юрий'
 import speech_recognition as sr
 import os
 from gtts import gTTS
