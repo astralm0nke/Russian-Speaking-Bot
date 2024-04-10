@@ -11,6 +11,7 @@ load_dotenv()
 
 openai.YURIS_KEY = os.getenv('OPENAI_SECRET')
 r = sr.Recognizer()
+response_text = tk.StrinVar(value=None)
 
 # Отпределите функции, которые слушает пользователя, общается моделю ЧатГПТ, и говорит пользователю
 def Speak(body):
@@ -47,7 +48,8 @@ def send_to_chatGPT(messages, model='gpt-3.5-turbo'):
     messages.append(response.choices[0].message)
     return message
 
-def main_loop():
+def _main_loop():
+    global response_text
     messages = []
     while(1):
         text = sr.record_text()
@@ -57,7 +59,7 @@ def main_loop():
 # Юрий произносит сообщение пользователю
         Speak(response)
     
-        reponse_text = response.text
+        response_text.set(str(response))
 
 
 ##---------------- Графический Ползователья Интерфейс Юрия ----------------##
@@ -65,10 +67,17 @@ cyrillic_font = 'assets/cyrillic_font/CYRIL1.ttf'
 window = tk.Tk()
 window.title('Юрий Компьютеров- Роботизированний партнер дла разговорнoго реча по-русски')
 window.geometry('750x500')
-window.after_idle(main_loop)
+
 label1 = tk.Label(window, font=cyrillic_font, text='Скажите что-нибудь Юрию!')
+label1.grid(row=0, column=0)
+
 canvas = tk.Canvas(window, width=360, height=360)
 yuri_img = tk.PhotoImage(file='assets/юрий_фото.png')
 canvas.create_image(image=yuri_img)
-canvas.grid(row=0, column=0)
+canvas.grid(row=1, column=0)
+
+yuri_response = tk.Label(window, font=cyrillic_font, textvariable=response_text)
+yuri_response.grid(row=2, column=0)
+
+window.after_idle(_main_loop)
 window.mainloop()
