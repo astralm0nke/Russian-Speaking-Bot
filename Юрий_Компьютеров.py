@@ -61,10 +61,14 @@ def main_loop():
 
 
 ##---------------- Графический Ползователья Интерфейс Юрия ----------------##
+cyrillic_font = 'assets/cyrillic_font/CYRIL1.ttf'
 window = tk.Tk()
 window.title('Юрий Компьютеров- Роботизированний партнер дла разговорнoго реча по-русски')
 window.geometry('750x500')
 window.after_idle(main_loop)
-canvas = tk.Canvas()
-yuri_image = tk.PhotoImage(file='assets/юрий_фото.png')
+label1 = tk.Label(window, font=cyrillic_font, text='Скажите что-нибудь Юрию!')
+canvas = tk.Canvas(window, width=360, height=360)
+yuri_img = tk.PhotoImage(file='assets/юрий_фото.png')
+canvas.create_image(image=yuri_img)
+canvas.grid(row=0, column=0)
 window.mainloop()
